@@ -1,15 +1,14 @@
 import { GraphQLServer } from 'graphql-yoga';
+import { prisma } from './generated/prisma-client';
 
 const server = new GraphQLServer({
-  typeDefs: `
-    type Query {
-      hello(name:String):String!
-    }
-  `,
+  typeDefs: './schema.graphql',
   resolvers: {
     Query:{
-      hello:(parent,{name},ctx) => {
-        return `${name},你好，欢迎来一起学习GraphQL!`
+      users: (root, { first},context) => {
+        return prisma.users({
+          where:{}
+        })
       }
     }
   }
