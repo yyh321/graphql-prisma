@@ -9,6 +9,9 @@ const server = new GraphQLServer({
         return prisma.users({
           where:{}
         })
+      },
+      user:(root,{id},context) => {
+        return prisma.user({id})
       }
     }
   }

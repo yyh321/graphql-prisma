@@ -1,8 +1,15 @@
 
 type Query{
+  # 查询用户列表
   users(first:Int): [User!]!
+  # 查询单个用户
+  user(id:ID):User
 }
 
 type User {
-  name:String
+  id: ID!
+  name:String!
+  password: String!
+  email: String
+  phone: String
 }
