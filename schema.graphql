@@ -1,4 +1,4 @@
-
+# 查询，读操作
 type Query{
   # 查询用户列表
   users(first:Int): [User!]!
@@ -6,8 +6,15 @@ type Query{
   user(id:ID):User
 }
 
+# Mutation 突变,增删改 写操作
 type Mutation {
   createUser(name:String!,password:String!,email:String,phone:String):User
+}
+
+# 订阅 即时消息
+type Subscription {
+  # graphql 订阅 API
+  userSubscribe: User
 }
 
 type User {

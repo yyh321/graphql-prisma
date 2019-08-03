@@ -14,9 +14,26 @@ const server = new GraphQLServer({
         return prisma.user({id})
       }
     },
+    // 突变
     Mutation:{
       createUser:(root,args,context) => {
         return prisma.createUser(args)
+      }
+    },
+
+    // 订阅
+    Subscription:{
+      userSubscribe: {
+          // 先订阅
+        subscribe:(root,args,context)=>{
+          return prisma.$subscribe.user({
+            mutation_in:["CREATED","DELETED","UPDATED"]
+          }).node()
+        },
+        // 再解析数据
+        resolve: payload => {
+          return payload
+        }
       }
     }
   }
