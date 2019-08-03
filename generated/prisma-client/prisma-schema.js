@@ -53,6 +53,9 @@ type Subscription {
 type User {
   id: ID!
   name: String!
+  password: String!
+  email: String
+  phone: String
 }
 
 type UserConnection {
@@ -64,6 +67,9 @@ type UserConnection {
 input UserCreateInput {
   id: ID
   name: String!
+  password: String!
+  email: String
+  phone: String
 }
 
 type UserEdge {
@@ -76,11 +82,20 @@ enum UserOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  password_ASC
+  password_DESC
+  email_ASC
+  email_DESC
+  phone_ASC
+  phone_DESC
 }
 
 type UserPreviousValues {
   id: ID!
   name: String!
+  password: String!
+  email: String
+  phone: String
 }
 
 type UserSubscriptionPayload {
@@ -103,10 +118,16 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateInput {
   name: String
+  password: String
+  email: String
+  phone: String
 }
 
 input UserUpdateManyMutationInput {
   name: String
+  password: String
+  email: String
+  phone: String
 }
 
 input UserWhereInput {
@@ -138,6 +159,48 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  phone: String
+  phone_not: String
+  phone_in: [String!]
+  phone_not_in: [String!]
+  phone_lt: String
+  phone_lte: String
+  phone_gt: String
+  phone_gte: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
