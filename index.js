@@ -13,6 +13,11 @@ const server = new GraphQLServer({
       user:(root,{id},context) => {
         return prisma.user({id})
       }
+    },
+    Mutation:{
+      createUser:(root,args,context) => {
+        return prisma.createUser(args)
+      }
     }
   }
 })
